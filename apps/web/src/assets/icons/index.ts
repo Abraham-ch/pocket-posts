@@ -1,0 +1,1 @@
+export { PhotoIcon } from './photo'

@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply text-slate-50 bg-taupe-950;
+  }
+}
