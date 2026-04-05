@@ -1,7 +1,29 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @layer base {
   body {
-    @apply text-slate-50 bg-taupe-950;
+    @apply bg-taupe-950 text-slate-50;
+  }
+
+  button {
+    @apply cursor-pointer transition-colors duration-200 ease-in-out;
+  }
+
+  @position-try --below-right {
+    inset: unset;
+    top: anchor(bottom);
+    left: anchor(left);
+  }
+
+  @position-try --below-left {
+    inset: unset;
+    top: anchor(bottom);
+    right: anchor(right);
+  }
+
+  @position-try --up-left {
+    inset: unset;
+    bottom: anchor(top);
+    right: anchor(right);
   }
 }
