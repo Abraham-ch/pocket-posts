@@ -1,0 +1,12 @@
+{
+  "name": "pocket-posts-monorepo",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev:web": "pnpm --filter pocket-posts dev",
+    "dev:pocketbase": "services\\pocketbase\\pocketbase.exe serve",
+    "build:web": "pnpm --filter pocket-posts build",
+    "lint:web": "pnpm --filter pocket-posts lint"
+  },
+  "devDependencies": {}
+}
