@@ -13,14 +13,15 @@ import type { User } from '@/types/user'
 import { Avatar } from './avatar'
 import { IconButton } from './icon-button'
 import { Popover } from './popover'
+import { useStore } from '@/hooks/store'
 
 type FeedPostProps = {
   post: RecordModel
   user: User
-  setShowComment: (show: string) => void
 }
 
-export const FeedPost = ({ post, user, setShowComment }: FeedPostProps) => {
+export const FeedPost = ({ post, user }: FeedPostProps) => {
+  const { toggleComment } = useStore()
   return (
     <article className='flex flex-col border-t border-gray-500/50 p-8 pb-2'>
       <section className='flex'>
@@ -64,7 +65,7 @@ export const FeedPost = ({ post, user, setShowComment }: FeedPostProps) => {
         </span>
       </section>
       <div className='flex gap-x-4 pt-4 pl-14.5'>
-        <IconButton onClick={() => setShowComment(`${post.id}`)}>
+        <IconButton onClick={() => toggleComment(post.id)}>
           <MessageIcon className='text-gray-300' />
         </IconButton>
         <IconButton>

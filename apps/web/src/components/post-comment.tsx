@@ -2,19 +2,20 @@ import type { User } from '@/types/user'
 import { cn } from '@/utils/cn'
 
 import { Avatar } from './avatar'
+import { useStore } from '@/hooks/store'
 
 type FeedPostProps = {
   postId: string
   user: User
-  showComment?: string
 }
 
-export const PostComment = ({ postId, showComment, user }: FeedPostProps) => {
+export const PostComment = ({ postId, user }: FeedPostProps) => {
+  const { openComments }= useStore()
   return (
     <div
       className={cn(
         'flex gap-x-2 border-b border-gray-500/50 px-8 pb-8',
-        showComment !== postId && 'hidden',
+        !openComments.has(postId) && 'hidden',
       )}
     >
       <textarea

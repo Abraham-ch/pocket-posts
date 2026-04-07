@@ -10,7 +10,6 @@ import type { User } from '@/types/user'
 
 export const Feed = () => {
   const [posts, setPosts] = useState<RecordModel[]>([])
-  const [showComment, setShowComment] = useState('')
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -39,13 +38,11 @@ export const Feed = () => {
         return (
           <div key={post.id}>
             <FeedPost
-              setShowComment={setShowComment}
               post={post}
               user={{ ...user, avatar: avatarUrl }}
             />
             <PostComment
               postId={post.id}
-              showComment={showComment}
               user={{ ...user, avatar: avatarUrl }}
             />
           </div>
