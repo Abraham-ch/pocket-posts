@@ -6,6 +6,7 @@ type AvatarProps = Pick<User, 'name' | 'avatar'> & {
   showName?: boolean
   onClick?: () => void
   className?: string
+  size?: number
 }
 
 export const Avatar = ({
@@ -14,6 +15,7 @@ export const Avatar = ({
   showName,
   onClick,
   className,
+  size,
 }: AvatarProps) => {
   return (
     <button
@@ -27,6 +29,7 @@ export const Avatar = ({
           className={cn(
             'size-12 self-start rounded-full object-cover',
             showName && 'size-10',
+            size && `size-${size}`,
           )}
         />
       ) : (
