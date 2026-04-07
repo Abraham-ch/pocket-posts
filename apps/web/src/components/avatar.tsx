@@ -29,11 +29,11 @@ export const Avatar = ({
           className={cn(
             'size-12 self-start rounded-full object-cover',
             showName && 'size-10',
-            size && `size-${size}`,
+            size && `size-${size}!`,
           )}
         />
       ) : (
-        <UserCircleIcon className='size-12' />
+        <UserCircleIcon className={cn('size-12', size && `size-${size}!`)} />
       )}
       {showName && <span className='pl-2.5 font-semibold'>{name}</span>}
     </button>
