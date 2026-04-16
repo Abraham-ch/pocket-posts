@@ -10,7 +10,7 @@ import { SectionPosts } from './pages/home/section-posts'
 
 export const Home = () => {
   const [showUserInfo, setShowUserInfo] = useState(false)
-  
+
   const user = PB.authStore.record
   const avatarUrl = user?.avatar && PB.files.getURL(user, user.avatar)
 
@@ -41,8 +41,8 @@ export const Home = () => {
           />
         ) : (
           <>
-            <Link to='/login'>Login</Link>
-            <Link to='/register'>Register</Link>
+            <Link to='/auth/login'>Login</Link>
+            <Link to='/auth/register'>Register</Link>
           </>
         )}
 
