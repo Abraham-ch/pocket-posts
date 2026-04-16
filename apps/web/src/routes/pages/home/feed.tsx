@@ -8,7 +8,11 @@ import { PB } from '@/hooks'
 import { getAllPosts, subscribeToPosts } from '@/hooks/post'
 import type { User } from '@/types/user'
 
-export const Feed = () => {
+type FeedProps = {
+  user?: User
+}
+
+export const Feed = ({ user }: FeedProps) => {
   const [posts, setPosts] = useState<RecordModel[]>([])
 
   useEffect(() => {
@@ -32,18 +36,18 @@ export const Feed = () => {
   return (
     <div>
       {posts.map((post) => {
-        const user: User = post.expand?.user_post
-        const avatarUrl = user?.avatar && PB.files.getURL(user, user.avatar)
+        const postUser: User = post.expand?.user_post
+        const avatarUrl = postUser?.avatar && PB.files.getURL(postUser, postUser.avatar)
 
         return (
           <div key={post.id}>
             <FeedPost
               post={post}
-              user={{ ...user, avatar: avatarUrl }}
+              user={{ ...postUser, avatar: avatarUrl }}
             />
             <PostComment
               postId={post.id}
-              user={{ ...user, avatar: avatarUrl }}
+              user={{ ...user, avatar: user? user.avatar : '' }}
             />
           </div>
         )

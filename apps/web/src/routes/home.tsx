@@ -9,8 +9,9 @@ import { Feed } from './pages/home/feed'
 import { SectionPosts } from './pages/home/section-posts'
 
 export const Home = () => {
+  const [showUserInfo, setShowUserInfo] = useState(false)
+  
   const user = PB.authStore.record
-  console.log('🚀 ~ Home ~ user:', user)
   const avatarUrl = user?.avatar && PB.files.getURL(user, user.avatar)
 
   const userInfo = {
@@ -19,9 +20,6 @@ export const Home = () => {
     email: user?.email,
     avatar: avatarUrl,
   }
-  console.log('userInfo:', userInfo)
-
-  const [showUserInfo, setShowUserInfo] = useState(false)
 
   return (
     <main className='flex h-full min-h-screen'>
@@ -29,7 +27,7 @@ export const Home = () => {
         <div className='flex flex-col py-6'>
           <h1 className='p-6 text-3xl font-bold'>Para ti</h1>
           <SectionPosts user={user ? userInfo : undefined} />
-          <Feed />
+          <Feed user={user ? userInfo : undefined} />
         </div>
       </section>
       <aside className='flex max-h-16 w-full max-w-[calc(50%-28rem)] flex-col gap-4 p-4 pr-6'>
