@@ -1,3 +1,3 @@
-export type IconProps = {
+export type IconProps = React.SVGProps<SVGSVGElement> & {
   className?: string
 }

@@ -1,5 +1,6 @@
-import type { Comment } from "@/types/comment"
-import { PB } from "."
+import type { Comment } from '@/types/comment'
+
+import { PB } from '.'
 
 export const createComment = (data: Comment) => {
   return PB.collection('comment').create(data)

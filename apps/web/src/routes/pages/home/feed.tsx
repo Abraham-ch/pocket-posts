@@ -37,17 +37,14 @@ export const Feed = ({ user }: FeedProps) => {
     <div>
       {posts.map((post) => {
         const postUser: User = post.expand?.user_post
-        const avatarUrl = postUser?.avatar && PB.files.getURL(postUser, postUser.avatar)
-
+        const avatarUrl =
+          postUser?.avatar && PB.files.getURL(postUser, postUser.avatar)
         return (
           <div key={post.id}>
-            <FeedPost
-              post={post}
-              user={{ ...postUser, avatar: avatarUrl }}
-            />
+            <FeedPost post={post} user={{ ...postUser, avatar: avatarUrl }} />
             <PostComment
               postId={post.id}
-              user={{ ...user, avatar: user? user.avatar : '' }}
+              user={{ ...user, avatar: user ? user.avatar : '' }}
             />
           </div>
         )

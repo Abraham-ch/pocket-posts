@@ -1,3 +1,5 @@
+import type { PostData, PostUpdateData } from '@/types/post'
+
 import { PB } from '.'
 
 export const getAllPosts = () => {
@@ -19,8 +21,6 @@ export const deletePost = (postId: string) => {
   return PB.collection('post').delete(postId)
 }
 
-type PostData = {
-  description: string
-  score?: number
-  user_post: string
+export const updatePost = (postId: string, data: PostUpdateData) => {
+  return PB.collection('post').update(postId, data)
 }

@@ -19,21 +19,25 @@ export const Avatar = ({
 }: AvatarProps) => {
   return (
     <button
-      className={cn('flex min-w-12 items-center', className)}
+      style={{ width: size, height: size }}
+      className={cn('flex items-center', className)}
       onClick={onClick}
     >
       {name && avatar ? (
         <img
           src={avatar}
           alt={name}
+          style={{ width: size, height: size }}
           className={cn(
             'size-12 self-start rounded-full object-cover',
-            showName && 'size-10',
-            size && `size-${size}!`,
+            showName && 'size-10'
           )}
         />
       ) : (
-        <UserCircleIcon className={cn('size-12', size && `size-${size}!`)} />
+        <UserCircleIcon 
+          style={{ width: size, height: size }}
+          className={cn('size-12')}
+        />
       )}
       {showName && <span className='pl-2.5 font-semibold'>{name}</span>}
     </button>

@@ -1,4 +1,4 @@
-import { create } from "zustand";
+import { create } from 'zustand'
 
 type StoreType = {
   openComments: Set<string>
@@ -14,6 +14,7 @@ export const useStore = create<StoreType>((set) => ({
         next.delete(postId)
       } else {
         next.add(postId)
-      } return { openComments: next }
+      }
+      return { openComments: next }
     }),
 }))
