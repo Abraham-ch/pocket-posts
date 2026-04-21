@@ -18,9 +18,10 @@ import { Popover } from './popover'
 type FeedPostProps = {
   post: RecordModel
   user: User
+  imageUrls: string[]
 }
 
-export const FeedPost = ({ post, user }: FeedPostProps) => {
+export const FeedPost = ({ post, user, imageUrls }: FeedPostProps) => {
   const { toggleComment } = useStore()
   return (
     <article className='flex flex-col border-t border-gray-500/50 px-8 py-6'>
@@ -62,6 +63,18 @@ export const FeedPost = ({ post, user }: FeedPostProps) => {
             </Popover>
           </span>
           <p className='h-full text-wrap break-all'>{post.description}</p>
+          {imageUrls.length > 0 && (
+            <div className='mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2'>
+              {imageUrls.map((imageUrl, index) => (
+                <img
+                  key={`${post.id}-image-${index}`}
+                  src={imageUrl}
+                  alt={`Attachment ${index + 1}`}
+                  className='max-h-80 w-full rounded-lg object-cover'
+                />
+              ))}
+            </div>
+          )}
         </span>
       </section>
       <div className='flex gap-x-4 pt-4 pl-14.5'>

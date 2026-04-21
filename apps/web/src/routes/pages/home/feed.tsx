@@ -39,9 +39,25 @@ export const Feed = ({ user }: FeedProps) => {
         const postUser: User = post.expand?.user_post
         const avatarUrl =
           postUser?.avatar && PB.files.getURL(postUser, postUser.avatar)
+        let postFiles: string[] = []
+
+        if (Array.isArray(post.File)) {
+          postFiles = post.File
+        } else if (post.File) {
+          postFiles = [post.File]
+        }
+
+        const imageUrls = postFiles.map((fileName: string) =>
+          PB.files.getURL(post, fileName),
+        )
+
         return (
           <div key={post.id}>
-            <FeedPost post={post} user={{ ...postUser, avatar: avatarUrl }} />
+            <FeedPost
+              post={post}
+              user={{ ...postUser, avatar: avatarUrl }}
+              imageUrls={imageUrls}
+            />
             <PostComment
               postId={post.id}
               user={{ ...user, avatar: user ? user.avatar : '' }}

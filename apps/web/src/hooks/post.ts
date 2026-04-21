@@ -1,4 +1,4 @@
-import type { PostData, PostUpdateData } from '@/types/post'
+import type { PostCreateInput, PostUpdateData } from '@/types/post'
 
 import { PB } from '.'
 
@@ -13,7 +13,7 @@ export const subscribeToPosts = (callback: () => void) => {
   return PB.collection('post').subscribe('*', callback)
 }
 
-export const createPost = (data: PostData) => {
+export const createPost = (data: PostCreateInput) => {
   return PB.collection('post').create(data)
 }
 
